@@ -23,7 +23,11 @@ class Engine(object):
             print("You are currently in %s" % next_scene_name)
             current_scene = self.scene_map.next_scene(next_scene_name)
 
-
+class Finished():
+    def enter(self):
+        print("G A M E   O V E R ")
+        print("*" * 30)
+        exit(1)
 
 
 class Death():
@@ -41,7 +45,7 @@ class Death():
         print(Death.quips[randint(0, len(self.quips)-1)])
         exit(1)
 
-class CentralCorridor():
+class CentralCorridor():  #this returns a string which is the scene we're in, in this case central corridor
     def enter(self):
         print("I finally wake after days of what seemed like a coma. I look in the small puddles on the floor")
         print("which showed my long brown hair and tired blue eyes.")
@@ -148,15 +152,54 @@ class LaserWeaponArmory():
 
 
 
-class TheBridge():
+class TheBridge(Scene):
     def enter(self):  # when you call function enter, it prints some stuff out
-        print("This scene is not yet configured. Subclass it and implement enter().")
-        print("you are now in the Bridge")
-        return "death"
+        print("You burst onto the Bridge with the neutron destruct bomb.")
+        print("under your arm and surprise the 5 Gothons who are trying to ")
+        print("take control of the ship. They haven't pulled out their weapons yet.")
+        print("What do you do?")
+        action=input("Throw Bomb/Place Bomb>")
+        if action=="Throw Bomb":
+            print("In a panic you throw the bomb at the group of Gothons")
+            print("and make a leap for the door. Right at you drop it a")
+            print("Gothon shoots you right in the back killing you. oops")
+            print("Bomb goes off")
+            return "death"
+        elif action=="Place Bomb":
+            print("You point your blaster at the bomb under your arm")
+            print("and the Gothons put their hands up and start to sweat")
+            print("you inch backward to the door, open it, and then carefully place the bomb")
+            print("on the floor, pointing your blaster at it.")
+            print("You then jump back through the door, punch the close button")
+            print("and blast the lock so the Gothons can't get out.")
+            print("Now that the bomb is placed you run to the escape pod to ")
+            print("get off this tin can.")
+            return "escape_pod"
+        else:
+            print("Does not compute!")
+            return "the_bridge"
 
 class EscapePod():
     def enter(self):  # when you call function enter, it prints some stuff out
-        print("This scene is not yet configured. Subclass it and implement enter().")
+        print("You rush through the ship desperately trying to make it to")
+        print("the escape pod before the whole ship explodes.")
+        print("It seems like hardly any Gothons are on the ship, so your run is clear of interference.")
+        print("You now get to the chamber with the escape pods and now need to pick one to take.")
+        print("Some of them could be damaged but you don't have time look. There's 2 pods, which one do you take?")
+
+        good_pod = randint(1,2)
+        guess = input("[pod #]> ")
+
+        if int(guess) != good_pod:
+            print("You jump into the pod %s and hit the eject button." % guess)
+            print("The pod shoots into space ... and explodes.")
+            return "death"
+        else:
+            print("You jump into pod %s and hit the eject button." % guess)
+            print("The pod shoots into space... and speeds away towards the planet below.")
+            print("As you look back you see your ship implode and then explode like a bright star.")
+            print("You WON!!!")
+            return "finished"
 
 class Map(object): #create an object called Map
     #define the dictionary of scenes - a look up table as such
@@ -165,7 +208,8 @@ class Map(object): #create an object called Map
         "laser_weapon_armory": LaserWeaponArmory(),
         "the_bridge" : TheBridge(),
         "escape_pod" : EscapePod(),
-        "death" : Death()
+        "death" : Death(),
+        "finished" : Finished()
     }
     def __init__(self,start_scene):   #INSTANTIATING PUTS "CNETRAL_CORRIDOR AS START_SCENE VARIABLE"
         self.start_scene = start_scene
@@ -181,7 +225,7 @@ class Map(object): #create an object called Map
 #anyScene=Scene()  #create an instance of a Scene and call it anyScene
 #anyScene.enter()
 
-a_map = Map("central_corridor")  #CREATE AN INSTANCE OF MAP, INITIALISE WITH "CENTRAL CORRIDOR"
+a_map = Map("escape_pod")  #CREATE AN INSTANCE OF MAP, INITIALISE WITH "CENTRAL CORRIDOR"
 a_game = Engine(a_map) #CREATE AN INSTANCE OF ENGINE, INITIALISE WITH THE MAP INSTANCE YOU CREATED ABOVE
                         #THE MAP INSTANCE ONLY HAS 'CENTRAL CORRIDOR' AT THE MOMENT.
 a_game.play() #NOW WE CALL THE PLAY METHOD IN THE ENGINE INSTANCE.
