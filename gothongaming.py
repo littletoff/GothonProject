@@ -18,10 +18,11 @@ class Engine(object):
     def play(self):                 #when you call play(), it sets the current_scene to opening_scene
         current_scene = self.scene_map.opening_scene()   #WHICH IS THE VARIABLE CENTRAL-CORRIDOR
         while True:
-            print("\n-------------------")
+            print("*" * 30)
             next_scene_name = current_scene.enter()
-            print("You are currently in %s" % next_scene_name)
+            #print("You are currently in %s" % next_scene_name)
             current_scene = self.scene_map.next_scene(next_scene_name)
+            print("*" * 30)
 
 class Finished():
     def enter(self):
@@ -47,20 +48,21 @@ class Death():
 
 class CentralCorridor():  #this returns a string which is the scene we're in, in this case central corridor
     def enter(self):
-        print("I finally wake after days of what seemed like a coma. I look in the small puddles on the floor")
-        print("which showed my long brown hair and tired blue eyes.")
+        print("I finally wake after days of what seemed like a coma.")
+        print("I look in the small puddles on the floor")
+        print("which show my long brown hair and tired blue eyes.")
+        print("\n")
         print("You see a message pinned to the wall:")
         print("\n")
         print("The Gothons of Planet Nectune have invaded your transport ship and destroyed")
         print("your entire crew. You are the last surviving member and your last")
         print("mission is to get the neutron destruct bomb from the Weapons Armoury")
-        print("put it in the bridge, and blow up after getting into an escape pod")
+        print("put it in the bridge, and blow up after getting into an escape pod.")
         print("\n")
         print("You're running down the central corridor to the Weapons Armoury when")
-        print(" you hear the beeping from your heat detector. It keeps getting louder")
-        print("and LOUDER until you suddenly  see these beedy red eyes staring right back at you.")
-        print("Oh Shit !")
-        print("A slime covered Gothon with red scaly skin and black teeth is now blocking the door to the armoury")
+        print("you hear the beeping from your heat detector. It keeps getting louder")
+        print("and LOUDER until you suddenly see two beedy red eyes staring right back at you.")
+        print("A slime covered Gothon with red scaly skin and black teeth is now blocking the door to the armoury.")
         print("\n")
         action=input("You're tired and drained, what do you do? > run away / fight / distract > ?")
 
@@ -82,11 +84,11 @@ class CentralCorridor():  #this returns a string which is the scene we're in, in
             print("as it swipes towards you and rips off your head!")
             return "death"
         elif action== "distract":     #THIS IS HOW TO PROCEED PAST THIS SCENE
-            print("You decide to distract the Gothon. ")
+            print("You decide to distract the Gothon.")
             print("I've got nothing on me. And I'm too weak to fight or run.")
-            print("I reach to you my trousers in which surprisingly I feel a metal box attached to my belt")
+            print("I reach down to my trousers and surprisingly I feel a metal box attached to my belt.")
             print("Oh yes - the heat detector! ")
-            print("I rip it off my belt not realising how vital the heat detector is for my mission.")
+            print("I rip it off my belt, not realising how vital the heat detector is for my mission.")
             print("I'm so tired and almost in a drunken state at this point.")
             print("As I panic, I press the button to make it beep extremely loudly; I throw the device across the ")
             print("corridor and into an isolation room.")
@@ -106,13 +108,13 @@ class CentralCorridor():  #this returns a string which is the scene we're in, in
 
 class LaserWeaponArmory():
     def enter(self):  # when you call function enter, it prints some stuff out
-        print("You are now in the laser weapon armory")
+        print("You are now in the laser weapon armory.")
         print("You enter the dark room of the weapon armoury")
         print("The walls are metal plated and the room is so dark you can barely see the other end of it.")
         print("It's damp and too quiet as you hear the little splashing of puddles as you step through them.")
         print("The little clanging from the metal shards on the ground scrape against your shoes.")
         print("You see the floor getting illuminated by something.  With your weakness you look up and you notice")
-        print("An illuminated barrier which has a box behind it.")
+        print("an illuminated barrier which has a box behind it.")
         print("This has got to be the bomb!")
         print("But it requires a code to remove the barrier!")
         print("\n")
@@ -120,10 +122,10 @@ class LaserWeaponArmory():
         action = input("left or right? > ")
         if action == "left":
             print("You decide to go left.")
-            print("The clanging and splashing returns as you take a few steps across the room to the wall on the left")
-            print("You are met with 3 buttons and what seems to be a riddle on the wall")
-            print("I come once a minute, twice in a moment, but never in thousand years. What am l?")
-            print("I see 3 buttons. The first one has T written under it, the second one M under it, and the 3rd has O")
+            print("The clanging and splashing returns as you take a few steps across the room to the wall on the left.")
+            print("You are met with 3 buttons and what seems to be a riddle on the wall:")
+            print("\"I come once a minute, twice in a moment, but never in thousand years. What am l?\"")
+            print("On the first button you can see the letter T written under it, the second one M under it, and the 3rd has O.")
             buttonanswer = input("One answer is correct - which do I choose? >" )
             if buttonanswer == "M":
                 print("You choose the middle button. Your bony hands push against the sharp metal button.")
@@ -145,8 +147,8 @@ class LaserWeaponArmory():
 
             return "death"
 
-        print("")
-        print("This scene is not yet configured. Subclass it and implement enter().")
+       # print("")
+       # print("This scene is not yet configured. Subclass it and implement enter().")
         return "death"
 
 
@@ -154,15 +156,16 @@ class LaserWeaponArmory():
 
 class TheBridge(Scene):
     def enter(self):  # when you call function enter, it prints some stuff out
-        print("You burst onto the Bridge with the neutron destruct bomb.")
-        print("under your arm and surprise the 5 Gothons who are trying to ")
+        print("You burst onto the Bridge with the neutron destruct bomb")
+        print("under your arm and surprise the 5 Gothons who are trying to")
         print("take control of the ship. They haven't pulled out their weapons yet.")
         print("What do you do?")
         action=input("Throw Bomb/Place Bomb>")
         if action=="Throw Bomb":
+
             print("In a panic you throw the bomb at the group of Gothons")
-            print("and make a leap for the door. Right at you drop it a")
-            print("Gothon shoots you right in the back killing you. oops")
+            print("and make a leap for the door. Right as you drop it a")
+            print("Gothon shoots you right in the back killing you.")
             print("Bomb goes off")
             return "death"
         elif action=="Place Bomb":
@@ -213,7 +216,7 @@ class Map(object): #create an object called Map
     }
     def __init__(self,start_scene):   #INSTANTIATING PUTS "CNETRAL_CORRIDOR AS START_SCENE VARIABLE"
         self.start_scene = start_scene
-        print(self.start_scene)  #IT WILL PRINTOUT THE START-SCENE NAME
+       # print(self.start_scene)  #IT WILL PRINTOUT THE START-SCENE NAME
 
     def next_scene(self, scene_name):
         return Map.scenes.get(scene_name)
@@ -225,7 +228,7 @@ class Map(object): #create an object called Map
 #anyScene=Scene()  #create an instance of a Scene and call it anyScene
 #anyScene.enter()
 
-a_map = Map("escape_pod")  #CREATE AN INSTANCE OF MAP, INITIALISE WITH "CENTRAL CORRIDOR"
+a_map = Map("central_corridor")  #CREATE AN INSTANCE OF MAP, INITIALISE WITH "CENTRAL CORRIDOR"
 a_game = Engine(a_map) #CREATE AN INSTANCE OF ENGINE, INITIALISE WITH THE MAP INSTANCE YOU CREATED ABOVE
                         #THE MAP INSTANCE ONLY HAS 'CENTRAL CORRIDOR' AT THE MOMENT.
 a_game.play() #NOW WE CALL THE PLAY METHOD IN THE ENGINE INSTANCE.
