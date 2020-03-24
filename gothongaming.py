@@ -1,6 +1,8 @@
 from sys import exit
 from random import randint
 
+#A very cool text based game
+
 class Scene(object):
     def enter(self): #when you call function enter, it prints some stuff out
         print("This scene is not yet configured. Subclass it and implement enter().")
