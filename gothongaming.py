@@ -44,6 +44,10 @@ class Death():
     ]
     def enter(self):  # when you call function enter, it prints some stuff out
         print(Death.quips[randint(0, len(self.quips)-1)])
+        print("\n")
+        print("* " * 20)
+        print(" F A I L U R E")
+        print("* " * 20)
         exit(1)
 
 class CentralCorridor():  #this returns a string which is the scene we're in, in this case central corridor
@@ -68,13 +72,13 @@ class CentralCorridor():  #this returns a string which is the scene we're in, in
 
         if action == "run away":
             print("You decide to run away. Good idea! Maybe.  You start the long marathon of the run back down the ")
-            print("Central corridor. You try everything but your knees are getting weaker feeling that breath down your spine")
-            print("Everything seems to be a blur whilst you run down this never ending corridor")
+            print("central corridor. You try everything but your knees are getting weaker feeling that breath down your spine.")
+            print("Everything seems to be a blur whilst you run down this never ending corridor.")
             print("Suddenly you feel a crunch in your foot followed by a pain in your knees")
-            print("You fell.")
-            print("That breathing down your spine increases by the second, as does your anxiety")
+            print("You fall.")
+            print("That breathing down your spine increases by the second, as does your anxiety.")
             print("You feel only numbness and realise that the spreading pool of blood is actually from you.")
-            print("You get the hit of pain, followed by the hit of blankness.")
+            print("You get the surge of pain, followed by the hit of blankness.")
             return "death"
         elif action== "fight":
             print("You decide to against your instinct to fight the Gothon. You use your tremendous will power")
@@ -98,13 +102,10 @@ class CentralCorridor():  #this returns a string which is the scene we're in, in
             return "laser_weapon_armory"
 
         else:
-            print("You twat, can you not even type properly??! Unfortunately, your hesitation has not helped")
-            print("The Gothon seizes its chance and splits you in half!")
-
-        print("")
+            print("Does not compute")
+            return "central_corridor"
 
 
-        return "death"
 
 class LaserWeaponArmory():
     def enter(self):  # when you call function enter, it prints some stuff out
@@ -140,42 +141,45 @@ class LaserWeaponArmory():
                 print("into your eyes!")
 
                 return "death"
-        else:
+        elif action == "right":
             print("You decide to go right and walk to the other end of the room.")
             print("Your strength fails you and you fall over on top of a pile of Gothon Claws.")
             print("With your dying breath you realise the claws have punctured your body and you bleed out.")
-
             return "death"
+        else:
+            print("DOES NOT COMPUTE")
+            return "laser_weapon_armory"
 
-       # print("")
-       # print("This scene is not yet configured. Subclass it and implement enter().")
-        return "death"
+
 
 
 
 
 class TheBridge(Scene):
     def enter(self):  # when you call function enter, it prints some stuff out
-        print("You burst onto the Bridge with the neutron destruct bomb")
-        print("under your arm and surprise the 5 Gothons who are trying to")
-        print("take control of the ship. They haven't pulled out their weapons yet.")
+        print("You burst onto the Bridge with the heavy bomb")
+        print("carried under your arm. You stop in your tracks as you notice 5 pairs of beedy red eyes staring at you.")
+        print("Your heart skips a beat as you panic and grab what seems to be a blaster.")
+        print("The 5 Gothons are reaching for their weapons and you know you don't have much time...")
         print("What do you do?")
         action=input("Throw Bomb/Place Bomb>")
         if action=="Throw Bomb":
 
-            print("In a panic you throw the bomb at the group of Gothons")
-            print("and make a leap for the door. Right as you drop it a")
-            print("Gothon shoots you right in the back killing you.")
-            print("Bomb goes off")
+            print("Your hands shake as you throw the bomb at the group of Gothons.")
+            print("You immediately regret your decision.")
+            print("You have no other choice but to leap for the door. Right as the bomb hits the floor, it is too late.")
+            print("A Gothon shoots you right in the head killing you.")
+            print("You fail the mission as one of the Gothons crunches the bomb under its clawed feet, before it can explode.")
+            print("")
             return "death"
         elif action=="Place Bomb":
             print("You point your blaster at the bomb under your arm")
-            print("and the Gothons put their hands up and start to sweat")
-            print("you inch backward to the door, open it, and then carefully place the bomb")
-            print("on the floor, pointing your blaster at it.")
-            print("You then jump back through the door, punch the close button")
-            print("and blast the lock so the Gothons can't get out.")
-            print("Now that the bomb is placed you run to the escape pod to ")
+            print("and the Gothons appear intimidated by your action. To your relief, they choose not to attack.")
+            print("You inch backward to the door, open it, and then carefully place the bomb")
+            print("on the floor. You take a deep breath as you pull the pin on the bomb.")
+            print("You gather your energy and jump back through the door and punch the close button.")
+            print("The door clicks locked.")
+            print("Now that the bomb is placed and counting down you run to the escape pod to ")
             print("get off this tin can.")
             return "escape_pod"
         else:
